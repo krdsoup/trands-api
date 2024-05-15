@@ -1,0 +1,21 @@
+
+type Account {
+	accountId: Int
+	email: String
+	passwd: String
+	tempPasswordYn: String
+	passwordModifyDt: String
+	authCode: String
+	name: String
+	phone: String
+	profileUrl: String
+	termAgreeYn: String
+	termAgreeDt: String
+	loginFailCnt: Int
+	statusCode: String
+	createdAt: String
+	creatorId: Int
+	updatedAt: String
+	updaterId: Int
+	useYn: String
+}

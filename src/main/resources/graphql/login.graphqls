@@ -1,0 +1,24 @@
+extend type Query {
+	login(req: Login): ResToken
+	tokenLogin(req: Login): ResToken
+}
+
+input Login {
+	email: String
+	passwd: String
+}
+
+input TokenLogin {
+	accessToken: String
+	refreshToken: String
+}
+
+type ResToken {
+	accessToken: String
+	refreshToken: String
+}
+
+type ResLogin {
+	account: Account
+	token: ResToken
+}

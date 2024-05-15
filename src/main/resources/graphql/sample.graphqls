@@ -1,0 +1,43 @@
+type Query {
+	getSample(id: Int): Sample
+	getSampleList(req: SearchSample): SampleList
+}
+
+type Mutation {
+	userLogin(req: UserLoginSample): SampleToken
+}
+
+type Sample {
+	sampleId: Int
+	sampleName: String
+	sampleNumber: Int
+	createdAt: String
+	creatorId: Int
+	updatedAt: String
+	updatorId: Int
+	useYn: String
+}
+
+input SearchSample {
+	sampleName: String
+	sampleNumber: Int
+	startTime: String
+	endTime: String
+	pageNum: Int
+	pageSize: Int
+}
+
+type SampleList {
+	size: Int
+	totalPage: Int
+	list: [Sample]
+}
+
+input UserLoginSample {
+	accountId: String
+}
+
+type SampleToken {
+	accessToken: String
+	refreshToken: String
+}

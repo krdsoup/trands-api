@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <appender name="dailyRollingFileAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <prudent>true</prudent>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/ubuntu/trands-api/logs/%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <encoder>
+            <pattern>[%.-1level] %d{MM-dd HH:mm:ss} [%10.10t] %replace([%22F:%-4L]){'.java',''} - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="dailyRollingErrorFileAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <prudent>true</prudent>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/home/ubuntu/trands-api/logs/%d{yyyy-MM-dd}-error.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>[%.-1level] %d{MM-dd HH:mm:ss} [%10.10t] %replace([%22F:%-4L]){'.java',''} - %X{dd.trace_id:-0} %X{dd.span_id:-0} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="kr.co.trands" level="WARN">
+        <appender-ref ref="dailyRollingFileAppender"/>
+        <appender-ref ref="dailyRollingErrorFileAppender"/>
+    </logger>
+    
+</configuration>

@@ -1,0 +1,95 @@
+# SERVER PORT
+server:
+  port: 3097
+  
+# LOGGING CONFIGS
+logging:
+  #config: classpath:logback-prod.xml
+  pattern:
+    console: "%highlight([%.-1level]) %green(%d{MM-dd HH:mm:ss}) %white([%10.10t]) %replace(%magenta([%22F:%-4L])){'.java',''} - %cyan(%msg) %n"
+  level:
+    root: ERROR
+    java.sql: ERROR
+    jdbc: OFF
+    jdbc.sqlonly: OFF
+    jdbc.sqltiming: INFO
+    jdbc.audit: OFF
+    jdbc.resultset: OFF
+    jdbc.resultsettable: OFF
+    jdbc.connection: OFF
+    kr.co.trands: INFO
+    org.springframework.web: FATAL
+    org.springframework.security: OFF
+    com:
+      zaxxer:
+        hikari:
+          HikariConfig: ERROR
+    org:
+      hibernate: OFF
+      
+# datasource
+app:
+  datasource:
+    trands:
+      hikari:
+        jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/trands?useSSL=false&serverTimezone=UTC&characterEncoding=UTF8&autoReconnect=true
+        password: T
+        username: t
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        max-lifetime: 420000
+        connection-timeout: 10000
+        idle-timeout: 10000
+        wait-timeout: 10000
+        maximum-pool-size: 10
+        minimum-idle: 5
+        validation-interval: 10000
+        connection-test-query: SELECT 0
+        data-source-properties:
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+          useServerPrepStmts: true
+  token:
+    policy: single
+
+# spring jpa
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8InnoDBDialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: false
+        generate_statistics: false
+        show_sql: false
+        use_sql_comments: false
+        order_by:
+          default_null_ordering: last
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+# AWS
+trands:
+  aws:
+    access-key: A
+    bucket-name: dsoup
+    secret-key: s
+    s3:
+      host: https://dsoup.s3.ap-northeast-2.amazonaws.com/
+
+# AWS CLOUD PROPS
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+      
+# local
+local:
+  directory:
+    tmp: /home/ubuntu/tmp/
