@@ -23,8 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class JWTUtil {
 
-    // private final static String TOKEN_KEY = "sadjflkjeoifweoiskvbkjsva323sdljflsdjflejflwjelfkjewlajlsdjflj";
-    private final static String TOKEN_KEY = "wjdgudwoqkrtkddbsrladnwjdrladlstnrlacksdlwodbsdlehdwns&rlatmdgus";
+    // private final static String TOKEN_KEY = "s";
+    private final static String TOKEN_KEY = "w";
 
     @Autowired
     private DateUtil dateUtils;
